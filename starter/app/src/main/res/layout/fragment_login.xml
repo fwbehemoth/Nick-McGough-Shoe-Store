@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.LoginFragment">
+
+    <data></data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/login_email_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/Login_email_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_email_label" />
+
+            <EditText
+                android:id="@+id/login_email_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/login_email_hint"
+                android:inputType="textEmailAddress"
+                android:minWidth="48dp"
+                android:minHeight="48dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/login_password_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@id/login_email_layout"
+            app:layout_constraintTop_toBottomOf="@id/login_email_layout" >
+
+            <TextView
+                android:id="@+id/login_password_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_password_label" />
+
+            <EditText
+                android:id="@+id/login_password_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/login_password_hint"
+                android:inputType="textPassword"
+                android:minWidth="48dp"
+                android:minHeight="48dp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            android:id="@+id/login_signin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_signin_text_button"
+            app:layout_constraintStart_toStartOf="@id/login_password_layout"
+            app:layout_constraintTop_toBottomOf="@id/login_password_layout" />
+
+        <Button
+            android:id="@+id/login_signup_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_signup_text_button"
+            app:layout_constraintEnd_toEndOf="@id/login_password_layout"
+            app:layout_constraintTop_toBottomOf="@id/login_password_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
