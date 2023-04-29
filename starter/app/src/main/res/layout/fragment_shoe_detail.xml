@@ -6,10 +6,11 @@
 
     <data>
         <variable
-            name="shoe"
-            type="com.udacity.shoestore.models.Shoe" />
+            name="shoeViewModel"
+            type="com.udacity.shoestore.viewmodels.ShoeDetailViewModel" />
     </data>
 
+    <!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -36,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/shoe_detail_name_hint"
-                android:text="@={shoe.name}"
+                android:text="@={shoeViewModel.shoeName}"
                 android:inputType="text"
                 android:minWidth="48dp"
                 android:minHeight="48dp" />
@@ -62,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Nike, Adidas, Vans, Etc."
-                android:text="@={shoe.company}"
+                android:text="@={shoeViewModel.shoeCompany}"
                 android:inputType="text"
                 android:minWidth="48dp"
                 android:minHeight="48dp" />
@@ -89,6 +90,7 @@
                 android:ems="10"
                 android:hint="@string/shoe_detail_size_hint"
                 android:inputType="number"
+                android:text="@={shoeViewModel.shoeSize}"
                 android:minWidth="48dp"
                 android:minHeight="48dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -113,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/shoe_detail_description_hint"
-                android:text="@={shoe.description}"
+                android:text="@={shoeViewModel.shoeDescription}"
                 android:inputType="text"
                 android:minWidth="48dp"
                 android:minHeight="48dp" />

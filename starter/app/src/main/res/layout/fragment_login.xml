@@ -5,6 +5,8 @@
     tools:context=".fragments.LoginFragment">
 
     <data></data>
+
+    <!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

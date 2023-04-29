@@ -1,41 +1,59 @@
 package com.udacity.shoestore.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
-import android.widget.HorizontalScrollView
-import android.widget.TextView
+import android.view.*
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
-import com.udacity.shoestore.viewmodels.ShoeViewModel
+import com.udacity.shoestore.databinding.ItemShoeListBinding
+import com.udacity.shoestore.models.Shoe
+import com.udacity.shoestore.viewmodels.ShoeListViewModel
 
 class ShoeListFragment : Fragment() {
-    lateinit var shoeViewModel: ShoeViewModel
-    lateinit var shoeListTextView: TextView
+    lateinit var shoeListViewModel: ShoeListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding: FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
-        shoeViewModel = ViewModelProvider(activity!!).get(ShoeViewModel::class.java)
-        shoeListTextView = binding.shoeListListText
+        shoeListViewModel = ViewModelProvider(activity!!).get(ShoeListViewModel::class.java)
+        binding.shoeListViewModel = shoeListViewModel
+        binding.lifecycleOwner = this
+        setHasOptionsMenu(true)
+
+        shoeListViewModel.shoeList.observe(activity!!, Observer {shoeList ->
+            for (shoe in shoeList){
+                addShoeItemToListView(binding, container, shoe)
+            }
+        })
 
         binding.shoeListActionButton.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
         }
-        refreshList()
+
         return  binding.root
     }
 
-    fun refreshList(){
-        var shoeTextList = StringBuilder()
-        for (shoe in shoeViewModel.shoeList.value!!.listIterator()){
-            shoeTextList.append("name:${shoe.name} size:${shoe.size}")
+    fun addShoeItemToListView(binding: FragmentShoeListBinding, container: ViewGroup?, shoe: Shoe){
+        val shoeBinding: ItemShoeListBinding = DataBindingUtil.inflate(
+            layoutInflater, R.layout.item_shoe_list, container, false
+        )
+        shoeBinding.shoe = shoe
+        binding.shoeListLinearLayout.addView(shoeBinding.root)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_shoe_list_fragment, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.menu_item_logout -> findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToLoginFragment())
         }
-        shoeListTextView.text = shoeTextList.toString()
+
+        return true
     }
 }
