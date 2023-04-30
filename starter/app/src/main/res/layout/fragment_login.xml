@@ -6,7 +6,7 @@
 
     <data></data>
 
-    <!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
+    <!--Using a Linear Layout to group the Label and EditText make it easier to add error markings if an entry is wrong-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

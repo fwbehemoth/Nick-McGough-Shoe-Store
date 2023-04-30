@@ -6,7 +6,7 @@
 
     <data></data>
 
-<!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
+    <!--Linear Layout make it easier to stack components vertically-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

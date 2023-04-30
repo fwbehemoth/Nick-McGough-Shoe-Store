@@ -6,7 +6,7 @@
 
     <data></data>
 
-    <!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
+    <!--Since the 2 TextViews and the Button are stacked. It's easier to keep them together with a Linear Layout-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

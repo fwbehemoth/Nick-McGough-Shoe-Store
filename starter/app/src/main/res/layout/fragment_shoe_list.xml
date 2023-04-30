@@ -10,7 +10,8 @@
             type="com.udacity.shoestore.viewmodels.ShoeListViewModel" />
     </data>
 
-    <!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
+    <!--Needed to use the Linear Layout as the container for the layouts that will be added to the ScrollView since you
+    can only set one child to the ScrollView-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

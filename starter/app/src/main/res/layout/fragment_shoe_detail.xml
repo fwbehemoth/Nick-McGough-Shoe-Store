@@ -10,7 +10,8 @@
             type="com.udacity.shoestore.viewmodels.ShoeDetailViewModel" />
     </data>
 
-    <!--I like to use linear layouts to group a few views together. As long as its only one level deep-->
+    <!--Using Linear Layouts to group the Label and Edit Text make it easier when notifying the user
+    that they missed an entry-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
